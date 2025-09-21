@@ -449,6 +449,15 @@
                             location.reload();
                         });
                     } else {
+                        if(resp.message =='exist'){
+                             Swal.fire({
+                        icon: 'error',
+                        title: 'Error!',
+                        text: 'Role name already exist.',
+                        timer: 3000,
+                        showConfirmButton: true
+                    });
+                        }
                       
                     }
                 },

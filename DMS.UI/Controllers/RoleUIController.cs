@@ -96,7 +96,27 @@ namespace DMS.UI.Controllers
 
                 if (resp.IsSuccessStatusCode)
                 {
-                    return Json(new { success = true });
+                    var responseString = await resp.Content.ReadAsStringAsync();
+
+                    // Deserialize to dynamic object
+                    var result = JsonConvert.DeserializeObject<dynamic>(responseString);
+
+                    int roleId = result.roleID;
+                    string message = result.message;
+
+                    if (roleId > 0)
+                    {
+                        return Json(new { success = true, message = "success" });
+                    }
+                    else if (roleId == -2)
+                    {
+                        return Json(new { success = false, message="exist" });
+                    }
+                    else
+                    {
+                        return Json(new { success = true , message = "error" });
+
+                    }
                 }
 
                 return Json(new { success = false, message = "Could not save role. Please try again." });

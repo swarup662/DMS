@@ -74,7 +74,7 @@ namespace DMS.API.Controllers
                 return BadRequest("Role name is required.");
 
             int newId = _roleRepo.SaveRole("INSERT", null, role.RoleName, role.RoleDescription, role.CreatedBy ?? 0);
-
+            
             return Ok(new { RoleID = newId, Message = "Role created successfully." });
         }
 
@@ -87,9 +87,9 @@ namespace DMS.API.Controllers
             int result = _roleRepo.SaveRole("UPDATE", role.RoleID, role.RoleName, role.RoleDescription, role.CreatedBy ?? 0);
 
             if (result > 0)
-                return Ok(new { Message = "Role updated successfully." });
+                return Ok(new { RoleID = result, Message = "Role updated successfully." });
 
-            return NotFound(new { Message = "Role not found or not updated." });
+            return NotFound(new { RoleID = result, Message = "Role not found or not updated." });
         }
 
 
@@ -101,9 +101,9 @@ namespace DMS.API.Controllers
             int result = _roleRepo.SaveRole("DELETE", role.RoleID, null, null, 0);
 
             if (result > 0)
-                return Ok(new { Message = "Role deleted successfully." });
+                return Ok(new { RoleID = result,Message = "Role deleted successfully." });
 
-            return NotFound(new { Message = "Role not found or already deleted." });
+            return NotFound(new { RoleID = result, Message = "Role not found or already deleted." });
         }
 
         [HttpPost("GetRoleById")]
