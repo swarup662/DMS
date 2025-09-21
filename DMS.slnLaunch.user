@@ -1,0 +1,16 @@
+[
+  {
+    "Name": "New Profile",
+    "Projects": [
+      {
+        "Path": "DMS.API\\DMS.API.csproj",
+        "Action": "Start",
+        "DebugTarget": "http"
+      },
+      {
+        "Path": "DMS.UI\\DMS.UI.csproj",
+        "Action": "Start"
+      }
+    ]
+  }
+]
