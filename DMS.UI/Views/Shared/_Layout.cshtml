@@ -262,9 +262,9 @@
                     }
                 </nav>
             </div>
-
+            
             <!-- Full text menu with modules -->
-            <div class="sidebar-main-menu " style="background-color: #f3f7f9;">
+            <div class="sidebar-main-menu " id="sidebar-new" style="background-color: #f3f7f9;   z-index: 9999; ">
                 <div id="two-col-menu" class="h-100" data-simplebar>
                     @{
                         bool isModuleFirst = true;
@@ -460,7 +460,23 @@
     <!-- Right bar overlay-->
     <div class="rightbar-overlay"></div>
 
- 
+@*  <script>
+             const toggleBtn = document.querySelector('.button-menu-mobile');
+        const sidebar = document.getElementById('sidebar-new');
+
+        toggleBtn.addEventListener('click', () => {
+            document.body.classList.toggle('sidebar-enabled');
+
+            if (document.body.classList.contains('sidebar-enabled')) {
+                  sidebar.style.display = 'block';
+                sidebar.style.zIndex = '9999'; // set on top
+                
+            } else {
+                sidebar.style.zIndex = ''; 
+                 sidebar.style.display = 'none'; // remove z-index
+            }
+        });
+     </script> *@
     <!-- Vendor js -->
     <script src="~/assets/js/vendor.min.js"></script>
     <script src="~/assets/libs/sweetalert2/sweetalert2.all.min.js"></script>
